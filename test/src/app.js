@@ -46,10 +46,13 @@ const Chat = mongoose.model('Chat', chatSchema);
 // ミドルウェア
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+//ルーティング
+const signup = require('./routes/signup.js');
+const login = require('./routes/login');
 
-
+app.use(signup);
 // 新規登録
-app.post('/signup', async (req, res) => {
+/*app.post('/signup', async (req, res) => {
     const {
         id,
         ps,
@@ -68,7 +71,7 @@ app.post('/signup', async (req, res) => {
         res.status(500).send('DBに保存できませんでした');
     }
     res.status(200).send('OK');
-});
+});*/
 
 app.post('/Searchname', async (req, res) => {
     const {
@@ -136,7 +139,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
     token = req.body.token; //トークンを取ってくる
     if (!token) {//なければエーラ
         return res.status(403).send({
@@ -144,7 +147,7 @@ app.use((req, res, next) => {
           msg: "No token provided"
         });
     }
-    jwt.verify(token, app.get(superSecret), (err, decoded) => {
+    jwt.verify(token, app.get("superSecret"), (err, decoded) => {
         // tokenが駄目だから拒否
         if (err) {
           console.log(err);
@@ -158,7 +161,7 @@ app.use((req, res, next) => {
         next();
       });
     });
-
+*/
 app.post('/chat', async (req, res) => {
     const {
         to,
