@@ -1,6 +1,5 @@
+require('express');
 const mongoose = require('mongoose');
-const express = require('express');
-const router = express.Router();
 const userSchema = new mongoose.Schema({
     name: { type: String, require: true, unique: true },
     id: { type: String, require: true, unique: true },
