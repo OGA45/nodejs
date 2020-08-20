@@ -1,14 +1,7 @@
 const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken");
 require('date-utils');
-const chatSchema = new mongoose.Schema({
-  to: { type: String, require: true },
-  text: { type: String, require: true },
-  times: { type: String, require: true },
-  from: { type: String, require: true },
-  id: { type: String, require: true }
-});
-const Chat = mongoose.model('Chat', chatSchema);
+require('../model/chat_model')
 exports.chatF=async(req,res,next)=>{
   token = req.body.token; //トークンを取ってくる
   if (!token) {//なければエーラ

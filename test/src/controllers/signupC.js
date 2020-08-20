@@ -1,19 +1,11 @@
 const mongoose = require('mongoose');
+require('../model/user_model')
 exports.signupF=async (req, res,next) => {
     const {
         id,
         ps,
         name
     } = req.body;
-    const userSchema = new mongoose.Schema({
-        name: { type: String, require: true, unique: true },
-        id: { type: String, require: true, unique: true },
-        ps: { type: String, require: true },
-        to: { type: String, require: true },
-        text: { type: String, require: true }
-        
-    });
-    const User = mongoose.model('User', userSchema);
     // DBにユーザーを登録する
     try {
         const user = await User.create({
