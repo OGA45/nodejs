@@ -7,5 +7,5 @@ const{
 }=require('../controllers/chatC');
 
 router.route("/chat").post(chatF);
-router.route("/chat").post(gchatF);
+router.route("/chat").get(gchatF);
 module.exports = router;
