@@ -71,7 +71,7 @@ exports.gchatF=async(req,res,next)=>{
   } = req.body;
   try {
     const user = await Chat.find({
-        id
+        {to:id}
     },function(err,data) {
         if(err) throw err;
         console.log(data[0].name);
@@ -85,7 +85,7 @@ res.status(200).send('OK');
 }
 
 
-app.post('/Searchid', async (req, res) => {
+/*app.post('/Searchid', async (req, res) => {
   const {
       id
   } = req.body;
@@ -103,8 +103,7 @@ app.post('/Searchid', async (req, res) => {
       res.status(500).send('失敗しました');
   }
   res.status(200).send('OK');
-});
-
+});*/
 
 /*app.use((req, res, next) => {
     token = req.body.token; //トークンを取ってくる
