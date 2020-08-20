@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const jwt = require("jsonwebtoken");
-require('../model/user_model')
+const User=require('../model/user_model')
 exports.loginF=async(req,res,next)=>{
     const {
         id,

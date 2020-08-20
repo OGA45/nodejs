@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-require('../model/user_model')
+const User=require('../model/user_model')
 exports.searchnameF=async(req,res,next)=>{
     const user_name=req.body.name;
     // DBからnameでユーザーを検索する

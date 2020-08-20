@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-require('../model/user_model')
+const User=require('../model/user_model')
 exports.signupF=async (req, res,next) => {
     const {
         id,
