@@ -9,7 +9,7 @@ exports.chatF=async(req,res,next)=>{
       msg: "No token provided"
     });
   }
-  jwt.verify(token, "kiukiu", (err, decoded) => {
+  jwt.verify(token, req.body.id, (err, decoded) => {
     // tokenが駄目だから拒否
     if (err) {
       console.log(err);

@@ -21,7 +21,7 @@ exports.loginF=async(req,res,next)=>{
             ps
         },function(err,data) {
             if(err) throw err;
-            const token = jwt.sign(req.body, "kiukiu", {expiresIn: 240});
+            const token = jwt.sign(req.body, req.body.id, {expiresIn: 240});
             res.json({
                 success: true,
                 id: id,
