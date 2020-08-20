@@ -18,7 +18,7 @@ exports.loginF=async(req,res,next)=>{
                 success: true,
                 id: id,
                 token: token
-              });
+            });
             console.log("HIT");
         });
     } catch (err) {
