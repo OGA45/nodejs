@@ -66,9 +66,7 @@ exports.gchatF=async(req,res,next)=>{
       });
     }
   });
-  const {
-    id
-  } = req.body;
+  const id=req.body.id;
   try {
     const user = await Chat.find({
         {to:id}
