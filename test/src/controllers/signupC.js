@@ -1,6 +1,6 @@
 require('mongoose');
 const User=require('../model/user_model')
-exports.signupF=async (req, res,next) => {
+exports.SignupF=async (req, res,next) => {
     const {
         id,
         ps,
@@ -13,7 +13,7 @@ exports.signupF=async (req, res,next) => {
             ps,
             name
         });
-    } catch (err) {
+    }catch(err){
         console.log(err.message);
         res.status(500).send('DBに保存できませんでした');
     }

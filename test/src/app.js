@@ -5,7 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 //サバーポート情報
 app.listen(PORT, () => { console.log(`Listning port ${PORT}`) });
 // MongoDBの接続情報

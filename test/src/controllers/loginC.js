@@ -1,7 +1,7 @@
 require('mongoose');
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 const User=require('../model/user_model')
-exports.loginF=async(req,res,next)=>{
+exports.LoginF=async(req,res,next)=>{
     const {
         id,
         ps
@@ -19,9 +19,9 @@ exports.loginF=async(req,res,next)=>{
                 id: id,
                 token: token
             });
-            console.log("HIT");
+            console.log('HIT');
         });
-    } catch (err) {
+    }catch(err){
         console.log(err.message);
         res.status(500).send('失敗しました');
     }

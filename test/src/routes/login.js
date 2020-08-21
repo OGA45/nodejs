@@ -5,6 +5,6 @@ const{
     loginF,
 }=require('../controllers/loginC');
 
-router.route("/login").post(loginF);
+router.route('/Login').post(loginF);
 
 module.exports = router;

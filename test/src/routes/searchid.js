@@ -5,6 +5,6 @@ const{
     searchidF,
 }=require('../controllers/searchidC');
 
-router.route("/searchid").get(searchidF);
+router.route('/searchid').get(Search_idF);
 
 module.exports = router;

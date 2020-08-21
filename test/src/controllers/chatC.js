@@ -1,13 +1,13 @@
 require('mongoose');
 require('date-utils');
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 const Chat=require('../model/chat_model')
-function tokencheck(req,res){
+function Tokencheck(req,res){
   token = req.body.token; //トークンを取ってくる
   if (!token) {//なければエーラ
     return res.status(403).send({
       success: false,
-      msg: "No token provided"
+      msg: 'No token provided'
     });
   }
   jwt.verify(token, req.body.id, (err, decoded) => {
@@ -16,13 +16,13 @@ function tokencheck(req,res){
       console.log(err);
       return res.json({
         success: false,
-        msg: "Invalid token"
+        msg: 'Invalid token'
       });
     }
   });
 };
-exports.chatF=async(req,res,next)=>{
-  tokencheck(req,res);
+exports.ChatF=async(req,res,next)=>{
+  Tokencheck(req,res);
   const {
     to,
     text
@@ -44,8 +44,8 @@ exports.chatF=async(req,res,next)=>{
   res.status(200).send('OK');
 };
 
-exports.gchatF = async (req, res, next) => {
-  tokencheck(req,res);
+exports.GchatF = async (req, res, next) => {
+  Tokencheck(req,res);
   const id = req.body.id;
   try {
     const user = await Chat.find({
