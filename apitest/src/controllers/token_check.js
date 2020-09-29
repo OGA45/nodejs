@@ -20,8 +20,7 @@ exports.Tokencheck=function (req,res,token){
                 msg: 'トークンの有効期限が切れています'
               });
             };
-            console.log(token);
-            return 1;
+            return true;
           });
         }catch(err){//トークンが無い
           console.log(err.name);
