@@ -1,6 +1,6 @@
 require('mongoose');
 const jwt = require('jsonwebtoken');
-const F=require('./tokecheck')
+const F=require('./token_check')
 const Token=require('../model/token_model');
 const { exit } = require('process');
 exports.LogoutF=async(req,res,next)=>{
