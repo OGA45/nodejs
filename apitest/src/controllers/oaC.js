@@ -1,16 +1,18 @@
 require('mongoose');
-const F=require('./tokecheck')
+const G=require('./token_get')
+const F=require('./token_check')
 const jwt = require('jsonwebtoken');
 const Oa=require('../model/oa_model')
-exports.OaF=async(req,res,next)=>{
-    F.Tokencheck(req,res);
+exports.OaF=(req,res,next)=>{
+    const token=G.Token_Get(req,res);
+    const t=F.Tokencheck(req,res,token);//ここの値が戻ってくるまで待ちたい
     const {
         oa_datetime,
         class_name,
         reason
     } = req.body;
     try {
-        const oa = await Oa.create({
+        const oa = Oa.create({
             oa_datetime,
             class_name,
             reason
@@ -20,8 +22,8 @@ exports.OaF=async(req,res,next)=>{
             "success":false
         });
     }
+    console.log(t);
     res.json({
-        "success":true,
-        "toke":""
+        "success":true
     });
 }
