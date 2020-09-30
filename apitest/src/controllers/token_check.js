@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const Token=require('../model/token_model');
-exports.Tokencheck=function (req,res,token){
+exports.Tokencheck= async function (req,res,token){
 
        Token.find({token:token},function(err,data){//DBからトークンを探す
         if(err){
