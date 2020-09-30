@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-exports.Token_Get=function (req,res){
+exports.Token_Get= async function (req,res){
     try {
         var token=req.headers.authorization.split(' ')[1]; //ヘッダーから取ってくる
         return token;
