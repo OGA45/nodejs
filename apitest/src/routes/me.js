@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const{
-    MeF,
-}=require('../controllers/meC');
+    Me,
+    Attendance,
+}=require('../controllers/me');
 
-router.route('/v1/me').get(MeF);
+router.route('/v1/me').get(Me);
+router.route('/v1/me/attendance').get(Attendance);
 module.exports = router;

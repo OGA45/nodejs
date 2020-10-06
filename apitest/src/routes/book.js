@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const{
-    Book_addF,
-    Book_searchF
-}=require('../controllers/bookC');
+    BookAdd,
+    BookSearch
+}=require('../controllers/book');
 
-router.route('/v1/book').post(Book_addF);//登録
-router.route('/v1/book').get(Book_searchF);//紹介・検索
+router.route('/v1/book').post(BookAdd);//登録
+router.route('/v1/book').get(BookSearch);//紹介・検索
 
 module.exports = router;
