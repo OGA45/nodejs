@@ -23,7 +23,10 @@ connectDatabase();
 // ミドルウェア
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+const tokencheck = require('./middleware/token');//トークン認証
+const err =require('./middleware/err');//エラー受け取り
 //ルーティング
+/*
 const signup = require('./routes/signup');//新規登録
 const login = require('./routes/login');//ログイン
 const password = require('./routes/password');//パソワード変更
@@ -35,7 +38,22 @@ const contact = require('./routes/contact');//問い合わせ
 const info = require('./routes/info');//お知らせ機能
 const me = require('./routes/me');//ユーザー情報
 const attendance = require('./routes/attendance');//出席率の表示
+*/
+const public = require('./routes/public');//認証なし
+const private = require('./routes/private');//認証有り
+const book = require('./routes/book');
+const contact = require('./routes/contact');
+const info = require('./routes/info');
+const me = require('./routes/me');
+/*
+const auth=require('./routes/auth');
+const book = require('./routes/book');
+const contact = require('./routes/contact');
+const info = require('./routes/info');
+const me = require('./routes/me');
+*/
 //接続先
+/*
 app.use(signup);
 app.use(login);
 app.use(password);
@@ -47,3 +65,20 @@ app.use(contact);
 app.use(info);
 app.use(me);
 app.use(attendance);
+*/
+
+app.use(public);
+app.use(tokencheck);//認証を挟む
+app.use(private);
+app.use(book);
+app.use(contact);
+app.use(info);
+app.use(me);
+app.use(err);//エラー受け取り
+/*
+app.use(auth);
+app.use(book);
+app.use(contact);
+app.use(info);
+app.use(me);
+*/
