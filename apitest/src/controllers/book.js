@@ -24,23 +24,24 @@ exports.BookAdd=async(req,res,next)=>{
     });
 }
 exports.BookSearch=async(req,res,next)=>{
-    if(req.body.search){
-        Book.find({
-            title:req.body.search
-        },function(err,data){
-            if(err||!data) return next(new Error("見つかりませんでした"));
+    if(!req.body.search){//title?
+        Book.find({//全部出す
+        },function(err,books){
+            if(err||!books) return next(new Error("見つかりませんでした"));
             res.json({
                 success:true,
-                book:{
-                    bookid:data.bookid,
-                    title:data.title,
-                    tags:data.tags
-                }
-            });
-        });
+                books
+            })
+        })
     }else{
-        res.json({
-            success:true,
+        Book.find({
+            title:req.body.search
+        },function(err,book){
+            if(err||!book) return next(new Error("見つかりませんでした"));
+            res.json({
+                success:true,
+                book
+            });
         });
     }
 }
