@@ -6,7 +6,7 @@ exports.Info=async(req,res,next)=>{
 
     }, function(err,info){
         if(err) return next(err);
-        res.json({
+        res.status(200).json({
             success: true,
             info
         })

@@ -16,7 +16,7 @@ exports.Signup=async (req, res,next) => {
     },function(err){
         if (err) return next(err);
     });
-    res.json({
+    res.status(200).json({
         success:true,
         toke:""
     });
@@ -40,7 +40,7 @@ exports.Login=async(req,res,next)=>{
         const token = jwt.sign(payload,process.env.JwtSecret,options);
         Token.updateOne({email:email},{token:token},{upsert: true},function(err,data) {
             if(err) return next(err);
-            res.json({
+            res.status(200).json({
                 success: true,
                 token: token
             });
@@ -52,7 +52,7 @@ exports.UpdatePassword=async (req,res,next) => {
     const id=mongoose.Types.ObjectId(res.locals.id);
     User.updateOne({_id:id},{password:req.body.password},function(err){
         if(err) return next(err);
-        res.json({
+        res.status(200).json({
             success:true
         });
     });
@@ -62,7 +62,7 @@ exports.Logout=async(req,res,next)=>{
     Token.deleteOne({token:token},function(err){
         if(err) return next(err);
     });
-    res.json({
+    res.status(200).json({
         success:true
     });
 }

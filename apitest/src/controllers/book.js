@@ -14,7 +14,7 @@ exports.BookAdd=async(req,res,next)=>{
     },function(err){
         if(err) return next(err);
     });
-    res.json({
+    res.status(200).json({
         success:true,
         book:{
             bookid:"",
@@ -28,7 +28,7 @@ exports.BookSearch=async(req,res,next)=>{
         Book.find({//全部出す
         },function(err,books){
             if(err||!books) return next(new Error("見つかりませんでした"));
-            res.json({
+            res.status(200).json({
                 success:true,
                 books
             })
@@ -38,7 +38,7 @@ exports.BookSearch=async(req,res,next)=>{
             title:req.body.search
         },function(err,book){
             if(err||!book) return next(new Error("見つかりませんでした"));
-            res.json({
+            res.status(200).json({
                 success:true,
                 book
             });

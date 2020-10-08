@@ -12,7 +12,7 @@ exports.Contact=async(req,res,next)=>{
     },function(err){
         if(err) return next(err);
     });
-    res.json({
+    res.status(200).json({
         "success":true
     });
 }
@@ -31,7 +31,7 @@ exports.Absence=async(req,res,next)=>{
     },function(err){
             if(err) return next(err);
     });
-    res.json({
+    res.status(200).json({
         "success":true
     });
 }
@@ -50,7 +50,7 @@ exports.Oa=async (req,res)=>{
     },function(err){
             if(err) return next(err);
     });
-    res.json({
+    res.status(200).json({
         "success":true
     });
 }
