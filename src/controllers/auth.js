@@ -4,6 +4,7 @@ const User = require('../model/user_model')
 const Token = require('../model/token_model')
 const jwt = require('jsonwebtoken');
 //const get=require('../middleware/token')
+
 //アカウント作成
 exports.Signup = async (req, res, next) => {
     const {
@@ -21,6 +22,7 @@ exports.Signup = async (req, res, next) => {
         toke: ""
     });
 };
+
 //ログイン処理
 exports.Login = async (req, res, next) => {
     const {
@@ -47,6 +49,7 @@ exports.Login = async (req, res, next) => {
         });
     });
 };
+
 //パスワード変更
 exports.UpdatePassword = async (req, res, next) => {
     const id = mongoose.Types.ObjectId(res.locals.id);
@@ -57,11 +60,13 @@ exports.UpdatePassword = async (req, res, next) => {
         });
     });
 }
+
 //ログアウト処理
 exports.Logout = async (req, res, next) => {
     Token.deleteOne({ token: token }, function (err) {
         if (err) return next(err);
     });
+    
     res.status(200).json({
         success: true
     });
