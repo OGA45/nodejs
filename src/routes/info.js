@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const{
+const {
     Info,
-}=require('../controllers/info');
+} = require('../controllers/info');
 
 router.route('/v1/info').get(Info);
 module.exports = router;
